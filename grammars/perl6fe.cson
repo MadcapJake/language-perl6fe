@@ -267,6 +267,16 @@
     'name': 'storage.type.declare.routine.perl6fe'
   }
   {
+    'begin': '(?x)(?<=
+      macro|sub|submethod|method|proto|rule|token|regex
+    )(?!\\-)\\s'
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.declare.routine.perl6fe'
+    'end': '\\s*(?=[\\(\\{])'
+    'name': 'entity.name.function.perl6fe'
+  }
+  {
     'match': '\\b(?<![\\-:])(self)(?!\\-)\\b'
     'name': 'variable.language.perl6fe'
   }
@@ -403,7 +413,7 @@
   {
     'match': '(?x)
       [\\$\\@](?=[\\s,;\\{\\[\\(])|
-      (?<=[\\(\\,])\\s*%|
+      (?<=[\\(\\,])\\s*%(?!\\w)|
       \\$_|
       \\$\\/|
       \\$\\!(?!\\w)'
@@ -479,12 +489,20 @@
           'match': '(?x)
             (\\$|@|%|&)
             (\\.|\\*|:|!|\\^|~|=|\\?|(<(?=.+>)))?
-            ([a-zA-Z_\xc0-\xff\\$])
             (
-              [a-zA-Z0-9_\xc0-\xff\\$]|
-              [\\-\'][a-zA-Z_\xc0-\xff\\$][a-zA-Z0-9_\xc0-\xff\\$]
-            )*'
-          'name': 'variable.other.identifier.perl6fe'
+              ([a-zA-Z_\xc0-\xff\\$])
+              (
+                [a-zA-Z0-9_\xc0-\xff\\$]|
+                [\\-\'][a-zA-Z_\xc0-\xff\\$][a-zA-Z0-9_\xc0-\xff\\$]
+              )*
+            )'
+          'captures':
+            '1':
+              'name': 'support.function.sigil.perl6fe'
+            '2':
+              'name': 'entity.name.function.twigil.perl6fe'
+            '3':
+              'name': 'symbol.name.perl6fe'
         }
     ]
   'interpolation':
