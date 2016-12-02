@@ -59,6 +59,18 @@
     'name': 'meta.documentation.block.declarator.perl6fe'
   }
   {
+    'begin': '#`\\(\\(',
+    'end': '\\)\\)',
+    'name': 'comment.multiline.hash-tick.doubleparens.perl6fe'
+    'patterns': [
+      {
+        'begin': '\\(\\('
+        'end': '\\)\\)'
+        'name': 'comment.internal.doubleparens.perl6fe'
+      }
+    ]
+  }
+  {
     'begin': '#`\\(',
     'end': '\\)',
     'name': 'comment.multiline.hash-tick.parens.perl6fe'
@@ -83,6 +95,18 @@
     ]
   }
   {
+    'begin': '#`\\{\\{',
+    'end': '\\}\\}',
+    'name': 'comment.multiline.hash-tick.doublebraces.perl6fe'
+    'patterns': [
+      {
+        'begin': '\\{\\{'
+        'end': '\\}\\}'
+        'name': 'comment.internal.doublebraces.perl6fe'
+      }
+    ]
+  }
+  {
     'begin': '#`\\{',
     'end': '\\}',
     'name': 'comment.multiline.hash-tick.braces.perl6fe'
@@ -97,12 +121,24 @@
   {
     'begin': '#`\\「',
     'end': '\\」',
-    'name': 'comment.multiline.hash-tick.perl6fe'
+    'name': 'comment.multiline.hash-tick.fwcornerbracket.perl6fe'
     'patterns': [
       {
         'begin': '\\「'
         'end': '\\」'
-        'name': 'comment.internal.parens.perl6fe'
+        'name': 'comment.internal.fwcornerbracket.perl6fe'
+      }
+    ]
+  }
+  {
+    'begin': '#`\\｢',
+    'end': '\\｣',
+    'name': 'comment.multiline.hash-tick.hwcornerbracket.perl6fe'
+    'patterns': [
+      {
+        'begin': '\\｢'
+        'end': '\\｣'
+        'name': 'comment.internal.hwcornerbracket.perl6fe'
       }
     ]
   }
@@ -327,6 +363,23 @@
     ]
   }
   {
+    'begin': '(?<=\\W|^)‘'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.perl6fe'
+    'end': '’'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.perl6fe'
+    'name': 'string.quoted.single.perl6fe'
+    'patterns': [
+      {
+        'match': '\\\\[‘’\\\\]'
+        'name': 'constant.character.escape.perl6fe'
+      }
+    ]
+  }
+  {
     'begin': '"'
     'beginCaptures':
       '0':
@@ -350,6 +403,53 @@
     ]
   }
   {
+    'begin': '“'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.perl6fe'
+    'end': '”'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.perl6fe'
+    'name': 'string.quoted.double.perl6fe'
+    'patterns': [
+      {
+        'match': '\\\\[abtnfre“”\\\\\\{\\}]'
+        'name': 'constant.character.escape.perl6fe'
+      }
+      {
+        'include': '#interpolation'
+      }
+      {
+        'include': '#special_variables'
+      }
+    ]
+  }
+  {
+    'begin': '”'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.perl6fe'
+    'end': '”'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.perl6fe'
+    'name': 'string.quoted.double.perl6fe'
+    'patterns': [
+      {
+        'match': '\\\\[abtnfre”“\\\\\\{\\}]'
+        'name': 'constant.character.escape.perl6fe'
+      }
+      {
+        'include': '#interpolation'
+      }
+      {
+        'include': '#special_variables'
+      }
+    ]
+  }
+
+  {
     'include': '#shellquotes'
   }
   {
@@ -357,10 +457,10 @@
   }
   {
     'begin': '(?x)
-      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q)
+      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q(?:x|w|ww|v|s|a|h|f|c|b|p)?)
       ((?:
         \\s*:(?:
-          x|exec|w|words|ww|quotewords|v|val|q|single|qq|double|
+          x|exec|w|words|ww|quotewords|v|val|q|single|double|
           s|scalar|a|array|h|hash|f|function|c|closure|b|blackslash|
           regexp|substr|trans|codes|p|path
         )
@@ -380,16 +480,16 @@
     'contentName': 'string.quoted.q.double.brace.perl6fe'
     'patterns': [
       {
-        'include': '#qq_brace_string_content'
+        'include': '#q_brace_string_content'
       }
     ]
   }
   {
     'begin': '(?x)
-      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q)
+      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q(?:x|w|ww|v|s|a|h|f|c|b|p)?)
       ((?:
         \\s*:(?:
-          x|exec|w|words|ww|quotewords|v|val|q|single|qq|double|
+          x|exec|w|words|ww|quotewords|v|val|q|single|double|
           s|scalar|a|array|h|hash|f|function|c|closure|b|blackslash|
           regexp|substr|trans|codes|p|path
         )
@@ -409,16 +509,16 @@
     'contentName': 'string.quoted.q.double.angle.perl6fe'
     'patterns': [
       {
-        'include': '#qq_angle_string_content'
+        'include': '#q_angle_string_content'
       }
     ]
   }
   {
     'begin': '(?x)
-      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q)
+      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q(?:x|w|ww|v|s|a|h|f|c|b|p)?)
       ((?:
         \\s*:(?:
-          x|exec|w|words|ww|quotewords|v|val|q|single|qq|double|
+          x|exec|w|words|ww|quotewords|v|val|q|single|double|
           s|scalar|a|array|h|hash|f|function|c|closure|b|blackslash|
           regexp|substr|trans|codes|p|path
         )
@@ -438,16 +538,16 @@
     'contentName': 'string.quoted.q.double.paren.perl6fe'
     'patterns': [
       {
-        'include': '#qq_paren_string_content'
+        'include': '#q_paren_string_content'
       }
     ]
   }
   {
     'begin': '(?x)
-      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q)
+      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q(?:x|w|ww|v|s|a|h|f|c|b|p)?)
       ((?:
         \\s*:(?:
-          x|exec|w|words|ww|quotewords|v|val|q|single|qq|double|
+          x|exec|w|words|ww|quotewords|v|val|q|single|double|
           s|scalar|a|array|h|hash|f|function|c|closure|b|blackslash|
           regexp|substr|trans|codes|p|path
         )
@@ -467,16 +567,16 @@
     'contentName': 'string.quoted.q.double.bracket.perl6fe'
     'patterns': [
       {
-        'include': '#qq_bracket_string_content'
+        'include': '#q_bracket_string_content'
       }
     ]
   }
   {
     'begin': '(?x)
-      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q)
+      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q(?:x|w|ww|v|s|a|h|f|c|b|p)?)
       ((?:
         \\s*:(?:
-          x|exec|w|words|ww|quotewords|v|val|q|single|qq|double|
+          x|exec|w|words|ww|quotewords|v|val|q|single|double|
           s|scalar|a|array|h|hash|f|function|c|closure|b|blackslash|
           regexp|substr|trans|codes|p|path
         )
@@ -496,16 +596,16 @@
     'contentName': 'string.quoted.q.single.brace.perl6fe'
     'patterns': [
       {
-        'include': '#qq_brace_string_content'
+        'include': '#q_brace_string_content'
       }
     ]
   }
   {
     'begin': '(?x)
-      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q)
+      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q(?:x|w|ww|v|s|a|h|f|c|b|p)?)
       ((?:
         \\s*:(?:
-          x|exec|w|words|ww|quotewords|v|val|q|single|qq|double|
+          x|exec|w|words|ww|quotewords|v|val|q|single|double|
           s|scalar|a|array|h|hash|f|function|c|closure|b|blackslash|
           regexp|substr|trans|codes|p|path
         )
@@ -525,16 +625,16 @@
     'contentName': 'string.quoted.q.single.angle.perl6fe'
     'patterns': [
       {
-        'include': '#qq_angle_string_content'
+        'include': '#q_angle_string_content'
       }
     ]
   }
   {
     'begin': '(?x)
-      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q)
+      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q(?:x|w|ww|v|s|a|h|f|c|b|p)?)
       ((?:
         \\s*:(?:
-          x|exec|w|words|ww|quotewords|v|val|q|single|qq|double|
+          x|exec|w|words|ww|quotewords|v|val|q|single|double|
           s|scalar|a|array|h|hash|f|function|c|closure|b|blackslash|
           regexp|substr|trans|codes|p|path
         )
@@ -554,16 +654,16 @@
     'contentName': 'string.quoted.q.single.slash.perl6fe'
     'patterns': [
       {
-        'include': '#qq_slash_string_content'
+        'include': '#q_slash_string_content'
       }
     ]
   }
   {
     'begin': '(?x)
-      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q)
+      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q(?:x|w|ww|v|s|a|h|f|c|b|p)?)
       ((?:
         \\s*:(?:
-          x|exec|w|words|ww|quotewords|v|val|q|single|qq|double|
+          x|exec|w|words|ww|quotewords|v|val|q|single|double|
           s|scalar|a|array|h|hash|f|function|c|closure|b|blackslash|
           regexp|substr|trans|codes|p|path
         )
@@ -583,16 +683,16 @@
     'contentName': 'string.quoted.q.single.paren.perl6fe'
     'patterns': [
       {
-        'include': '#qq_paren_string_content'
+        'include': '#q_paren_string_content'
       }
     ]
   }
   {
     'begin': '(?x)
-      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q)
+      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q(?:x|w|ww|v|s|a|h|f|c|b|p)?)
       ((?:
         \\s*:(?:
-          x|exec|w|words|ww|quotewords|v|val|q|single|qq|double|
+          x|exec|w|words|ww|quotewords|v|val|q|single|double|
           s|scalar|a|array|h|hash|f|function|c|closure|b|blackslash|
           regexp|substr|trans|codes|p|path
         )
@@ -612,16 +712,16 @@
     'contentName': 'string.quoted.q.single.bracket.perl6fe'
     'patterns': [
       {
-        'include': '#qq_bracket_string_content'
+        'include': '#q_bracket_string_content'
       }
     ]
   }
   {
     'begin': '(?x)
-      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q)
+      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q(?:x|w|ww|v|s|a|h|f|c|b|p)?)
       ((?:
         \\s*:(?:
-          x|exec|w|words|ww|quotewords|v|val|q|single|qq|double|
+          x|exec|w|words|ww|quotewords|v|val|q|single|double|
           s|scalar|a|array|h|hash|f|function|c|closure|b|blackslash|
           regexp|substr|trans|codes|p|path
         )
@@ -641,16 +741,16 @@
     'contentName': 'string.quoted.q.single.apostrophe.perl6fe'
     'patterns': [
       {
-        'include': '#qq_single_string_content'
+        'include': '#q_single_string_content'
       }
     ]
   }
   {
     'begin': '(?x)
-      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q)
+      (q{1,2}(?:x|w|ww|v|s|a|h|f|c|b|p)?|Q(?:x|w|ww|v|s|a|h|f|c|b|p)?)
       ((?:
         \\s*:(?:
-          x|exec|w|words|ww|quotewords|v|val|q|single|qq|double|
+          x|exec|w|words|ww|quotewords|v|val|q|single|double|
           s|scalar|a|array|h|hash|f|function|c|closure|b|blackslash|
           regexp|substr|trans|codes|p|path
         )
@@ -670,7 +770,7 @@
     'contentName': 'string.quoted.q.single.quote.perl6fe'
     'patterns': [
       {
-        'include': '#qq_double_string_content'
+        'include': '#q_double_string_content'
       }
     ]
   }
@@ -781,7 +881,7 @@
   }
   {
     'match': '(?x)\\b(?<![\\-:])(
-       take|do|when|next|last|redo|return
+       take|do|when|next|last|redo|return|return-rw
       |contend|maybe|defer|default|exit
       |make|made|continue|break|goto|leave|supply
       |async|lift|await|start|react|whenever
@@ -1077,7 +1177,7 @@
   'shellquotes':
     'patterns': [
         {
-          'begin': '(qx)\\s*({{)'
+          'begin': '([qQ]x)\\s*({{)'
           'beginCaptures':
             '1':
               'name': 'string.quoted.q.shell.operator.perl6fe'
@@ -1091,11 +1191,12 @@
           'patterns': [
             {
               'include': 'source.shell'
+              'include': '#q_single_string_content'
             }
           ]
         }
         {
-          'begin': '(qx)\\s*({)'
+          'begin': '([qQ]x)\\s*({)'
           'beginCaptures':
             '1':
               'name': 'string.quoted.q.shell.operator.perl6fe'
@@ -1109,11 +1210,13 @@
           'patterns': [
             {
               'include': 'source.shell'
+              'include': '#q_single_string_content'
+
             }
           ]
         }
         {
-          'begin': '(qx)\\s*(\\[\\[)'
+          'begin': '([qQ]x)\\s*(\\[\\[)'
           'beginCaptures':
             '1':
               'name': 'string.quoted.q.shell.operator.perl6fe'
@@ -1127,11 +1230,12 @@
           'patterns': [
             {
               'include': 'source.shell'
+              'include': '#q_single_string_content'
             }
           ]
         }
         {
-          'begin': '(qx)\\s*(\\[)'
+          'begin': '([Qq]x)\\s*(\\[)'
           'beginCaptures':
             '1':
               'name': 'string.quoted.q.shell.operator.perl6fe'
@@ -1145,11 +1249,12 @@
           'patterns': [
             {
               'include': 'source.shell'
+              'include': '#q_single_string_content'
             }
           ]
         }
         {
-          'begin': '(qx)\\s*(\\|)'
+          'begin': '([Qq]x)\\s*(\\|)'
           'beginCaptures':
             '1':
               'name': 'string.quoted.q.shell.operator.perl6fe'
@@ -1163,11 +1268,12 @@
           'patterns': [
             {
               'include': 'source.shell'
+              'include': '#q_single_string_content'
             }
           ]
         }
         {
-          'begin': '(qx)\\s*(\\/)'
+          'begin': '([Qq]x)\\s*(\\/)'
           'beginCaptures':
             '1':
               'name': 'string.quoted.q.shell.operator.perl6fe'
@@ -1185,6 +1291,7 @@
             }
             {
               'include': 'source.shell'
+              'include': '#q_single_string_content'
             }
           ]
         }
@@ -1480,7 +1587,7 @@
             'include': '#p5_escaped_char'
           }
           {
-            'include': '#qq_brace_string_content'
+            'include': '#q_brace_string_content'
           }
         ]
       }
@@ -1511,7 +1618,7 @@
             'include': '#p5_escaped_char'
           }
           {
-            'include': '#qq_bracket_string_content'
+            'include': '#q_bracket_string_content'
           }
         ]
       }
@@ -1542,7 +1649,7 @@
             'include': '#p5_escaped_char'
           }
           {
-            'include': '#qq_slash_string_content'
+            'include': '#q_slash_string_content'
           }
         ]
       }
@@ -1670,59 +1777,59 @@
         'name': 'meta.interpolation.perl6fe'
       }
     ]
-  'qq_angle_string_content':
+  'q_angle_string_content':
     'begin': '<'
     'end': '>'
     'patterns': [
       {
-        'include': '#qq_angle_string_content'
+        'include': '#q_angle_string_content'
       }
     ]
-  'qq_brace_string_content':
+  'q_brace_string_content':
     'begin': '{'
     'end': '}'
     'patterns': [
       {
-        'include': '#qq_brace_string_content'
+        'include': '#q_brace_string_content'
       }
     ]
-  'qq_bracket_string_content':
+  'q_bracket_string_content':
     'begin': '\\['
     'end': '\\]'
     'patterns': [
       {
-        'include': '#qq_bracket_string_content'
+        'include': '#q_bracket_string_content'
       }
     ]
-  'qq_double_string_content':
+  'q_double_string_content':
     'begin': '\"'
     'end': '\"'
     'patterns': [
       {
-        'include': '#qq_double_string_content'
+        'include': '#q_double_string_content'
       }
     ]
-  'qq_paren_string_content':
+  'q_paren_string_content':
     'begin': '\\('
     'end': '\\)'
     'patterns': [
       {
-        'include': '#qq_paren_string_content'
+        'include': '#q_paren_string_content'
       }
     ]
-  'qq_single_string_content':
+  'q_single_string_content':
     'begin': '\''
     'end': '\''
     'patterns': [
       {
-        'include': '#qq_single_string_content'
+        'include': '#q_single_string_content'
       }
     ]
-  'qq_slash_string_content':
+  'q_slash_string_content':
     'begin': '\\\\/'
     'end': '\\\\/'
     'patterns': [
       {
-        'include': '#qq_slash_string_content'
+        'include': '#q_slash_string_content'
       }
     ]
