@@ -1,11 +1,13 @@
-# Atom Perl 6 Support - Fun Edition!
+# Atom Perl 6 Support - Forgotten Edition!
 
 [![apm package][apm-ver-link]][releases]
 [![][dl-badge]][apm-pkg-link]
 [![][mit-badge]][mit]
 [![][slack-badge]][slack]
 
-A more colorful, thoughtful, and helpful language grammar for Perl 6. Derived from the builtin [language-perl](https://github.com/atom/language-perl) package but with many bugfixes and additions.  You might ask why I didn't just add a PR there but I feel that this package adds quite a bit more that it might not be everyone's cup of tea. However, I do plan on adding support for autocomplete+, linter, atom-build, and atom-runner.  Maybe even integrating a perl6 REPL would be fun!
+This used to be my attempt at improving the Perl 6 highlighter over the builtin one for Atom. I have since lost almost all of my time for programming.  Thankfully the Perl 6 community has taken it upon themselves to continue where I left off and make it an [official] project. **Please use the official [atom-language-perl6][official] highlighter going forward and not my own as this package is not maintained.**
+
+Derived from the builtin [language-perl](https://github.com/atom/language-perl) package but with many bugfixes and additions.  You might ask why I didn't just add a PR there but I feel that this package adds quite a bit more that it might not be everyone's cup of tea. ~~However, I do plan on adding support for autocomplete+, linter, atom-build, and atom-runner.  Maybe even integrating a perl6 REPL would be fun!~~
 
 ![A screenshot of an funnified Perl 6 file](https://raw.githubusercontent.com/MadcapJake/language-perl6fe/master/images/example3.png)
 
@@ -40,9 +42,9 @@ above, your `t` files will be highlighted with the `language-perl` highlighter (
 
 * More syntax highlighted (numbers, operators, interpolation, traits, better strings)
 
-* This package will also soon contain support for many popular atom packages that have service hooks like autocomplete+ and linter
+* ~~This package will also soon contain support for many popular atom packages that have service hooks like autocomplete+ and linter~~
 
-* I'd like to add a builtin REPL eventually
+* ~~I'd like to add a builtin REPL eventually~~
 
 Here's a few more examples:
 
@@ -63,5 +65,4 @@ Here's a few more examples:
 [apm-pkg-link]: https://atom.io/packages/language-perl6fe
 [apm-ver-link]: https://img.shields.io/apm/v/language-perl6fe.svg
 [dl-badge]:     http://img.shields.io/apm/dm/language-perl6fe.svg
-[slack-badge]:  http://perl6.bestforever.com/badge.svg
-[slack]:        http://perl6.bestforever.com
+[official]:     https://github.com/perl6/atom-language-perl6
