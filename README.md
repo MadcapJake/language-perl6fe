@@ -3,7 +3,6 @@
 [![apm package][apm-ver-link]][releases]
 [![][dl-badge]][apm-pkg-link]
 [![][mit-badge]][mit]
-[![][slack-badge]][slack]
 
 This used to be my attempt at improving the Perl 6 highlighter over the builtin one for Atom. I have since lost almost all of my time for programming.  Thankfully the Perl 6 community has taken it upon themselves to continue where I left off and make it an [official] project. **Please use the official [atom-language-perl6][official] highlighter going forward and not my own as this package is not maintained.**
 
