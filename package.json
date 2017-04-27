@@ -1,7 +1,8 @@
 {
   "name": "language-perl6fe",
-  "version": "1.8.0",
-  "description": "Perl 6 Language Highlighter Fun Edition",
+  "main": "./lib/main",
+  "version":  "1.8.0",
+  "description": "Perl 6 Language Highlighter Forgotten Edition (Deprecated)",
   "engines": {
     "atom": "*",
     "node": "*"
@@ -14,6 +15,12 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/madcapjake/language-perl6fe/issues"
+  },
+  "package-deps": [
+    "language-perl6"
+  ],
+  "dependencies": {
+      "atom-package-deps": "latest"
   },
   "devDependencies": {
     "coffeelint": "^1.10.1"
