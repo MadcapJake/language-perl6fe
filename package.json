@@ -1,7 +1,7 @@
 {
   "name": "language-perl6fe",
   "main": "./lib/main",
-  "version":  "1.8.0",
+  "version": "2.0.0",
   "description": "Perl 6 Language Highlighter Forgotten Edition (Deprecated)",
   "engines": {
     "atom": "*",
@@ -20,7 +20,7 @@
     "language-perl6"
   ],
   "dependencies": {
-      "atom-package-deps": "latest"
+    "atom-package-deps": "latest"
   },
   "devDependencies": {
     "coffeelint": "^1.10.1"
